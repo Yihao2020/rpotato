@@ -22,11 +22,11 @@ class MoviesController < ApplicationController
     end
     
     if params[:ratings]
-      @movies = Movie.where(:rating => params[:ratings].keys).find(:all, :order => (params[:sort]))
+      @movies = Movie.where(:rating => params[:ratings].keys).find(:all, :order =>params[:sort])
     end
+    @sort = params[:sort]
     @all_ratings = Movie.all_ratings
     @set_ratings = params[:ratings]
-    @sort = params[:sort]
     if !@set_ratings
       @set_ratings = Hash.new
     end
